@@ -1,4 +1,4 @@
-const API_URL = "192.168.1.5:8080"
+const API_URL = "http://192.168.1.5:8080"
 document.addEventListener('DOMContentLoaded', function() {
     const photoForm = document.getElementById('photoForm');
     const photoInput = document.getElementById('photoInput');
