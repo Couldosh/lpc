@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Upload Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="result-card" style="display:none; margin-top: 20px;font-size: 30px">
+    <p id="result-text"></p>
+    <button id="toggle-result-card">Ok</button>
+</div>
+<div class="camera-ctn">
+    <canvas id="canvas"> </canvas>
+    <div class="camera-view">
+        <video id="camera-stream" autoplay loop muted>
+            <source src="" >
+        </video>
+    </div>
+    <div class="camera-bottom">
+        <div class="inner">
+            <div class="shutter-ctn">
+                <button id="shutter" class="shutter">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
