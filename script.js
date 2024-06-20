@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Assuming the server expects the Base64 data under the key 'photo'
         const dataToSend = {base64Image: await base64data};
 
-        fetch(API_URL, {
+        fetch(API_URL+"/isblacklist", {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
