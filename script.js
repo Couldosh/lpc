@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Function to toggle the visibility of the result card
         document.getElementById('toggle-result-card').addEventListener('click', function() {
             const resultCard = document.getElementById('result-card');
-                resultCard.style.display = 'none';
+            resultCard.style.display = 'none';
         });
     });
 
@@ -63,27 +63,22 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas.width = width;
         canvas.height = height;
         canvasContext.drawImage(cameraVideoStream, 0, 0, width, height);
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                // Convert captured data to Blob URL
-                canvas.toBlob(async (blob) => {
-                    const base64data = await getBase64(blob);
 
-                    await sendDataToServer(base64data, position.coords.latitude, position.coords.longitude);
-                }, 'image/jpeg');
-            });
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
+        // Convert captured data to Blob URL
+        canvas.toBlob(async (blob) => {
+            const base64data = await getBase64(blob);
+
+            await sendDataToServer(base64data);
+        }, 'image/jpeg');
 
     }
 
     shutterButton.addEventListener('click', () => captureImage())
 
     // Function to send the Base64 data to the server
-    async function sendDataToServer(base64data, latitude, longitude) {
+    async function sendDataToServer(base64data) {
         // Assuming the server expects the Base64 data under the key 'photo'
-        const dataToSend = {base64Image: await base64data, latitude: latitude, longitude: longitude};
+        const dataToSend = {base64Image: await base64data};
 
         fetch(API_URL, {
             method: 'post',
